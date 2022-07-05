@@ -1,0 +1,22 @@
+{
+  "name": "esbuild-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild ./src/index.js --bundle --outdir=\"build\" --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sokol69/esbuild-template.git"
+  },
+  "author": "Dmitry Sokolov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sokol69/esbuild-template/issues"
+  },
+  "homepage": "https://github.com/sokol69/esbuild-template#readme",
+  "devDependencies": {
+    "esbuild": "^0.14.48"
+  }
+}
