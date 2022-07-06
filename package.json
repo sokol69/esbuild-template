@@ -20,5 +20,9 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "esbuild": "^0.14.48"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
