@@ -1,1 +1,2 @@
-console.log('test');
+const someLongName='test!';
+console.log(someLongName);

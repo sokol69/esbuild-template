@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild ./src/index.js --bundle --outdir=\"build\" --minify"
+    "build": "cross-env REACT_APP_ENV=production  node ./config/build/esbuild-config.js",
+    "build:dev": "cross-env REACT_APP_ENV=development  node ./config/build/esbuild-config.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/sokol69/esbuild-template#readme",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "esbuild": "^0.14.48"
   }
 }
