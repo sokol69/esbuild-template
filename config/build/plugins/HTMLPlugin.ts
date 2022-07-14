@@ -1,6 +1,6 @@
 import { Plugin } from 'esbuild';
 import { rm, writeFile } from 'fs/promises';
-import path from "path";
+import path from 'path';
 
 interface HTMLPluginOptions {
   template?: string;
@@ -10,7 +10,9 @@ interface HTMLPluginOptions {
 }
 
 const renderHTML = (options: HTMLPluginOptions): string => {
-  return options.template || `
+  return (
+    options.template ||
+    `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -18,7 +20,9 @@ const renderHTML = (options: HTMLPluginOptions): string => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>${options.title}</title>
-      ${options?.cssPath?.map((path) => `<link href="${path}" rel="stylesheet">`).join(' ')}
+      ${options?.cssPath
+        ?.map((path) => `<link href="${path}" rel="stylesheet">`)
+        .join(' ')}
     </head>
     <body>
       <div id="root"></div>
@@ -35,24 +39,28 @@ const renderHTML = (options: HTMLPluginOptions): string => {
     </body>
     </html>
   `
-}
+  );
+};
 
 const preparePaths = (outputs: string[]) => {
-  return outputs.reduce<Array<string[]>>((acc, path) => {
-    const [js, css] = acc;
-    const splittedFileName = path.split('/').pop();
+  return outputs.reduce<Array<string[]>>(
+    (acc, path) => {
+      const [js, css] = acc;
+      const splittedFileName = path.split('/').pop();
 
-    if (splittedFileName?.endsWith('.js')) {
-      js.push(splittedFileName)
-    } else if (splittedFileName?.endsWith('.css')) {
-      css.push(splittedFileName)
-    }
+      if (splittedFileName?.endsWith('.js')) {
+        js.push(splittedFileName);
+      } else if (splittedFileName?.endsWith('.css')) {
+        css.push(splittedFileName);
+      }
 
-    return acc;
-  }, [[], []]);
-}
+      return acc;
+    },
+    [[], []],
+  );
+};
 
-export const HTMLPlugin = (options: HTMLPluginOptions):Plugin => {
+export const HTMLPlugin = (options: HTMLPluginOptions): Plugin => {
   return {
     name: 'HTMLPlugin',
     setup(build) {
@@ -62,7 +70,7 @@ export const HTMLPlugin = (options: HTMLPluginOptions):Plugin => {
         if (outdir) {
           await rm(outdir, { recursive: true });
         }
-      })
+      });
 
       build.onEnd(async (result) => {
         const outputs = result.metafile?.outputs;
@@ -71,10 +79,10 @@ export const HTMLPlugin = (options: HTMLPluginOptions):Plugin => {
         if (outdir) {
           await writeFile(
             path.resolve(outdir, 'index.html'),
-            renderHTML({ jsPath, cssPath, ...options })
-            );
+            renderHTML({ jsPath, cssPath, ...options }),
+          );
         }
-      })
-    }
-  }
-}
+      });
+    },
+  };
+};

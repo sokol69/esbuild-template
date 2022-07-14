@@ -10,6 +10,6 @@ export const CleanPlugin: Plugin = {
       if (outdir) {
         await rm(outdir, { recursive: true });
       }
-    })
-  }
-}
+    });
+  },
+};

@@ -1,5 +1,5 @@
-import ESBuild from "esbuild";
+import ESBuild from 'esbuild';
 
-import config from "./esbuild-config"
+import config from './esbuild-config';
 
-ESBuild.build(config).catch(console.log)
+ESBuild.build(config).catch(console.log);

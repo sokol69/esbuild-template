@@ -1,5 +1,5 @@
-import { BuildOptions } from "esbuild";
-import path from "path";
+import { BuildOptions } from 'esbuild';
+import path from 'path';
 import cssModulesPlugin from 'esbuild-css-modules-plugin';
 
 import { CleanPlugin } from './plugins/cleanPlugin';
@@ -28,11 +28,7 @@ const config: BuildOptions = {
     '.png': 'file',
     '.svg': 'file',
   },
-  plugins: [
-    CleanPlugin,
-    HTMLPlugin({ title: 'Esbuild Template' }),
-    cssModulesPlugin()
-  ],
-}
+  plugins: [CleanPlugin, HTMLPlugin({ title: 'Esbuild Template' }), cssModulesPlugin()],
+};
 
 export default config;
