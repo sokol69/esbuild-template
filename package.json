@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env REACT_APP_ENV=production  node ./config/build/esbuild-prod.js",
-    "start": "node ./config/build/esbuild-dev.js"
+    "build": "cross-env REACT_APP_ENV=production  ts-node ./config/build/esbuild-prod.ts",
+    "start": "ts-node ./config/build/esbuild-dev.ts"
   },
   "repository": {
     "type": "git",
