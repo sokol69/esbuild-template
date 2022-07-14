@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Button from 'components/Button/Button';
+import Logo from 'assets/images/esbuild-logo.png'
+
 import './style.css'
-import Logo from '../assets/images/esbuild-logo.png'
 
 const App = () => {
   const handleClick = () => {
@@ -11,7 +13,7 @@ const App = () => {
   return (
     <>
       <div>Hello ESBuild</div>
-      <button onClick={handleClick}>Error!</button>
+      <Button onClick={handleClick}>Generate Error</Button>
       <img src={Logo} alt="Logo" />
     </>
    );
