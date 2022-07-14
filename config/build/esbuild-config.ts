@@ -16,7 +16,12 @@ const config: BuildOptions = {
   bundle: true,
   tsconfig: resolveRoot('tsconfig.json'),
   minify: isProd,
-  sourcemap: isDev
+  sourcemap: isDev,
+  loader: {
+    '.jpg': 'file',
+    '.png': 'file',
+    '.svg': 'file',
+  }
 }
 
 export default config;
